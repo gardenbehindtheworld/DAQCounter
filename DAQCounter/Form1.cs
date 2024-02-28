@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NationalInstruments.DAQmx;
+using NationalInstruments.Restricted;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,11 @@ namespace DAQCounter
 {
     public partial class frm1 : Form
     {
+        private string[] devices;
+        private string[] counterInChannels;
+        private string[] counterOutChannels;
+        private string[] pfiTerminals;
+
         public frm1()
         {
             InitializeComponent();
@@ -19,7 +26,55 @@ namespace DAQCounter
 
         private void Frm1_Load(object sender, EventArgs e)
         {
+            // Get device and channel arrays
+            devices = DaqSystem.Local.Devices;
+            counterInChannels = DaqSystem.Local.GetPhysicalChannels(
+                PhysicalChannelTypes.CI, PhysicalChannelAccess.External);
+            counterOutChannels = DaqSystem.Local.GetPhysicalChannels(
+                PhysicalChannelTypes.CO, PhysicalChannelAccess.External);
 
+            // Get PFI terminals
+            List<string> pfiTerminalList = new List<string>();
+            foreach (string terminal in DaqSystem.Local.GetTerminals(TerminalTypes.Basic))
+            {
+                if (terminal.ToLower().Contains("pfi")) pfiTerminalList.Add(terminal);
+            }
+            pfiTerminals = pfiTerminalList.ToArray();
+
+            // Devices combo box settings
+            cboDevices.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDevices.Items.AddRange(devices);
+            if (cboDevices.Items.Count > 0) cboDevices.SelectedIndex = 0;
+
+            // Counter In combo box settings
+            cboCounterIn.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCounterIn.Items.AddRange(counterInChannels);
+            if (cboCounterIn.Items.Count > 0) cboCounterIn.SelectedIndex = 0;
+
+            // Counter Out combo box settings
+            cboCounterOut.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCounterOut.Items.AddRange(pfiTerminals);
+            if (cboCounterOut.Items.Count > 0) cboCounterOut.SelectedIndex = 0;
+
+            // Frequency updown settings
+            updDesiredFrequency.Minimum = 1;
+            updDesiredFrequency.Maximum = 100000;
+            updDesiredFrequency.Value = 1000;
+
+            // Duty Cycle updown settings
+            updDutyCycle.Minimum = 1;
+            updDutyCycle.Maximum = 99;
+            updDutyCycle.Value = 50;
+
+            // Input Terminal updown settings
+            updInputTerminal.Minimum = 0;
+            updInputTerminal.Maximum = pfiTerminals.Length - 1;
+            updInputTerminal.Value = 0;
+
+            // Output Terminal updown settings
+            updOutputTerminal.Minimum = 0;
+            updOutputTerminal.Maximum = pfiTerminals.Length - 1;
+            updOutputTerminal.Value = 1;
         }
     }
 }
