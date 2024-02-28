@@ -36,9 +36,7 @@ namespace DAQCounter
             // Get PFI terminals
             List<string> pfiTerminalList = new List<string>();
             foreach (string terminal in DaqSystem.Local.GetTerminals(TerminalTypes.Basic))
-            {
                 if (terminal.ToLower().Contains("pfi")) pfiTerminalList.Add(terminal);
-            }
             pfiTerminals = pfiTerminalList.ToArray();
 
             // Devices combo box settings
@@ -53,7 +51,7 @@ namespace DAQCounter
 
             // Counter Out combo box settings
             cboCounterOut.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCounterOut.Items.AddRange(pfiTerminals);
+            cboCounterOut.Items.AddRange(counterOutChannels);
             if (cboCounterOut.Items.Count > 0) cboCounterOut.SelectedIndex = 0;
 
             // Frequency updown settings
