@@ -197,5 +197,19 @@ namespace DAQCounter
             co.Stop();
             co.DisposeTask();
         }
+
+        private void BtnMeasureFrequency_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblMeasuredFrequencyNum.Text = ci.GetFrequency().ToString();
+            }
+            catch (DaqException ex)
+            {
+                lblMeasuredFrequencyNum.Text = "";
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
     }
 }

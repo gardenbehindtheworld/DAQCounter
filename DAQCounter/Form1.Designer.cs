@@ -240,6 +240,7 @@
             this.btnMeasureFrequency.TabIndex = 20;
             this.btnMeasureFrequency.Text = "Measure Frequency";
             this.btnMeasureFrequency.UseVisualStyleBackColor = true;
+            this.btnMeasureFrequency.Click += new System.EventHandler(this.BtnMeasureFrequency_Click);
             // 
             // lblOutputStatus
             // 
