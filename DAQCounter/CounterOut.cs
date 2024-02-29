@@ -29,6 +29,18 @@ namespace DAQCounter
         {
             try
             {
+                coTask.COChannels.CreatePulseChannelFrequency(Channel, string.Empty,
+                    COPulseFrequencyUnits.Hertz, COPulseIdleState.High, 0, Frequency,
+                    (double)DutyCycle / 100);
+            }
+            catch (DaqException ex)
+            {
+                if (ex.Error != -200489) throw new DaqException(ex.Message);
+            }
+
+            try
+            {
+                coTask.COChannels.All.PulseTerminal = Terminal;
                 coTask.Timing.ConfigureImplicit(SampleQuantityMode.ContinuousSamples);
                 coTask.Start();
             }
@@ -38,7 +50,7 @@ namespace DAQCounter
                 throw new DaqException(ex.Message);
             }
 
-            this.Enabled = true;
+            Enabled = true;
         }
 
         public void Stop()
@@ -52,7 +64,7 @@ namespace DAQCounter
                 throw new DaqException(ex.Message);
             }
 
-            this.Enabled = false;
+            Enabled = false;
         }
 
         public void DisposeTask()
