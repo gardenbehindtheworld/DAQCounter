@@ -172,11 +172,13 @@ namespace DAQCounter
         private void updDesiredFrequency_ValueChanged(object sender, EventArgs e)
         {
             co.Frequency = (double)updDesiredFrequency.Value;
+            co.Restart();
         }
 
         private void updDutyCycle_ValueChanged(object sender, EventArgs e)
         {
             co.DutyCycle = (int)updDutyCycle.Value;
+            co.Restart();
         }
 
         private void updInputTerminal_ValueChanged(object sender, EventArgs e)

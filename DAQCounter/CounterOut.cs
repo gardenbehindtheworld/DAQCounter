@@ -67,6 +67,16 @@ namespace DAQCounter
             Enabled = false;
         }
 
+        public void Restart()
+        {
+            if (Enabled)
+            {
+                Stop();
+                Start();
+            }
+            else { Stop(); }
+        }
+
         public void DisposeTask()
         {
             coTask?.Dispose();
