@@ -76,6 +76,12 @@ namespace DAQCounter
             updOutputTerminal.Minimum = 0;
             updOutputTerminal.Maximum = pfiTerminals.Length < 1 ? 0 : pfiTerminals.Length - 1;
             updOutputTerminal.Value = updOutputTerminal.Maximum < 1 ? 0 : 1;
+
+            if (cboDevices.Items.Count < 1)
+            {
+                SetUserInputPermissions(false);
+                MessageBox.Show("There are no available devices.");
+            }
         }
 
         private void btnOutputFrequency_Click(object sender, EventArgs e)
@@ -106,6 +112,19 @@ namespace DAQCounter
                     lblOutputStatus.BackColor = Color.FromArgb(255, 128, 128);
                     break;
             }
+        }
+
+        private void SetUserInputPermissions(bool enableDisable)
+        {
+            cboDevices.Enabled = enableDisable;
+            cboCounterIn.Enabled = enableDisable;
+            cboCounterOut.Enabled = enableDisable;
+            updDesiredFrequency.Enabled = enableDisable;
+            updDutyCycle.Enabled = enableDisable;
+            updInputTerminal.Enabled = enableDisable;
+            updOutputTerminal.Enabled = enableDisable;
+            btnOutputFrequency.Enabled = enableDisable;
+            btnMeasureFrequency.Enabled = enableDisable;
         }
     }
 }
