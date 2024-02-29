@@ -159,39 +159,39 @@ namespace DAQCounter
             co.Device = cboDevices.Text;
         }
 
-        private void cboCounterIn_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboCounterIn_SelectedIndexChanged(object sender, EventArgs e)
         {
             co.Channel = cboCounterIn.Text;
         }
 
-        private void cboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void updDesiredFrequency_ValueChanged(object sender, EventArgs e)
+        private void UpdDesiredFrequency_ValueChanged(object sender, EventArgs e)
         {
             co.Frequency = (double)updDesiredFrequency.Value;
             co.Restart();
         }
 
-        private void updDutyCycle_ValueChanged(object sender, EventArgs e)
+        private void UpdDutyCycle_ValueChanged(object sender, EventArgs e)
         {
             co.DutyCycle = (int)updDutyCycle.Value;
             co.Restart();
         }
 
-        private void updInputTerminal_ValueChanged(object sender, EventArgs e)
+        private void UpdInputTerminal_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void updOutputTerminal_ValueChanged(object sender, EventArgs e)
+        private void UpdOutputTerminal_ValueChanged(object sender, EventArgs e)
         {
             co.Terminal = pfiTerminals[(int)updOutputTerminal.Value];
         }
 
-        private void frm1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Frm1_FormClosed(object sender, FormClosedEventArgs e)
         {
             co.Stop();
             co.DisposeTask();

@@ -72,7 +72,7 @@
             this.cboCounterIn.Name = "cboCounterIn";
             this.cboCounterIn.Size = new System.Drawing.Size(104, 21);
             this.cboCounterIn.TabIndex = 1;
-            this.cboCounterIn.SelectedIndexChanged += new System.EventHandler(this.cboCounterIn_SelectedIndexChanged);
+            this.cboCounterIn.SelectedIndexChanged += new System.EventHandler(this.CboCounterIn_SelectedIndexChanged);
             // 
             // cboCounterOut
             // 
@@ -81,7 +81,7 @@
             this.cboCounterOut.Name = "cboCounterOut";
             this.cboCounterOut.Size = new System.Drawing.Size(104, 21);
             this.cboCounterOut.TabIndex = 2;
-            this.cboCounterOut.SelectedIndexChanged += new System.EventHandler(this.cboCounterOut_SelectedIndexChanged);
+            this.cboCounterOut.SelectedIndexChanged += new System.EventHandler(this.CboCounterOut_SelectedIndexChanged);
             // 
             // updDutyCycle
             // 
@@ -89,7 +89,7 @@
             this.updDutyCycle.Name = "updDutyCycle";
             this.updDutyCycle.Size = new System.Drawing.Size(104, 20);
             this.updDutyCycle.TabIndex = 3;
-            this.updDutyCycle.ValueChanged += new System.EventHandler(this.updDutyCycle_ValueChanged);
+            this.updDutyCycle.ValueChanged += new System.EventHandler(this.UpdDutyCycle_ValueChanged);
             // 
             // updDesiredFrequency
             // 
@@ -97,7 +97,7 @@
             this.updDesiredFrequency.Name = "updDesiredFrequency";
             this.updDesiredFrequency.Size = new System.Drawing.Size(104, 20);
             this.updDesiredFrequency.TabIndex = 4;
-            this.updDesiredFrequency.ValueChanged += new System.EventHandler(this.updDesiredFrequency_ValueChanged);
+            this.updDesiredFrequency.ValueChanged += new System.EventHandler(this.UpdDesiredFrequency_ValueChanged);
             // 
             // updInputTerminal
             // 
@@ -105,7 +105,7 @@
             this.updInputTerminal.Name = "updInputTerminal";
             this.updInputTerminal.Size = new System.Drawing.Size(104, 20);
             this.updInputTerminal.TabIndex = 5;
-            this.updInputTerminal.ValueChanged += new System.EventHandler(this.updInputTerminal_ValueChanged);
+            this.updInputTerminal.ValueChanged += new System.EventHandler(this.UpdInputTerminal_ValueChanged);
             // 
             // updOutputTerminal
             // 
@@ -113,7 +113,7 @@
             this.updOutputTerminal.Name = "updOutputTerminal";
             this.updOutputTerminal.Size = new System.Drawing.Size(104, 20);
             this.updOutputTerminal.TabIndex = 6;
-            this.updOutputTerminal.ValueChanged += new System.EventHandler(this.updOutputTerminal_ValueChanged);
+            this.updOutputTerminal.ValueChanged += new System.EventHandler(this.UpdOutputTerminal_ValueChanged);
             // 
             // lblMeasuredFrequencyNum
             // 
@@ -280,7 +280,7 @@
             this.Controls.Add(this.cboDevices);
             this.Name = "frm1";
             this.Text = "Pulse Counter";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm1_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm1_FormClosed);
             this.Load += new System.EventHandler(this.Frm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.updDutyCycle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updDesiredFrequency)).EndInit();
