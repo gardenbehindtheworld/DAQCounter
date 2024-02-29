@@ -22,7 +22,7 @@ namespace DAQCounter
 
         public CounterOut()
         {
-            this.Enabled = false;
+            Enabled = false;
         }
 
         public void Start()
@@ -41,6 +41,8 @@ namespace DAQCounter
             try
             {
                 coTask.COChannels.All.PulseTerminal = Terminal;
+                coTask.COChannels.All.PulseDutyCycle = (double)DutyCycle / 100;
+                coTask.COChannels.All.PulseFrequency = Frequency;
                 coTask.Timing.ConfigureImplicit(SampleQuantityMode.ContinuousSamples);
                 coTask.Start();
             }
@@ -74,7 +76,7 @@ namespace DAQCounter
                 Stop();
                 Start();
             }
-            else { Stop(); }
+            else Stop();
         }
 
         public void DisposeTask()
