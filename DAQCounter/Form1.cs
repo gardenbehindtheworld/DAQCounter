@@ -14,6 +14,9 @@ namespace DAQCounter
 {
     public partial class frm1 : Form
     {
+        private CounterOut co = new CounterOut();
+
+        // Channel/device arrays
         private string[] devices;
         private string[] counterInChannels;
         private string[] counterOutChannels;
@@ -66,13 +69,43 @@ namespace DAQCounter
 
             // Input Terminal updown settings
             updInputTerminal.Minimum = 0;
-            updInputTerminal.Maximum = pfiTerminals.Length - 1;
+            updInputTerminal.Maximum = pfiTerminals.Length < 1 ? 0 : pfiTerminals.Length - 1;
             updInputTerminal.Value = 0;
 
             // Output Terminal updown settings
             updOutputTerminal.Minimum = 0;
-            updOutputTerminal.Maximum = pfiTerminals.Length - 1;
-            updOutputTerminal.Value = 1;
+            updOutputTerminal.Maximum = pfiTerminals.Length < 1 ? 0 : pfiTerminals.Length - 1;
+            updOutputTerminal.Value = updOutputTerminal.Maximum < 1 ? 0 : 1;
+        }
+
+        private void btnOutputFrequency_Click(object sender, EventArgs e)
+        {
+            switch (co.Enabled)
+            {
+                case true:
+                    co.Stop();
+                    SetOutputStatus(false);
+                    break;
+                case false:
+                    co.Start();
+                    SetOutputStatus(true);
+                    break;
+            }
+        }
+
+        private void SetOutputStatus(bool startStop)
+        {
+            switch (startStop)
+            {
+                case true:
+                    lblOutputStatus.Text = "Running";
+                    lblOutputStatus.BackColor = Color.FromArgb(128, 255, 128);
+                    break;
+                case false:
+                    lblOutputStatus.Text = "Stopped";
+                    lblOutputStatus.BackColor = Color.FromArgb(255, 128, 128);
+                    break;
+            }
         }
     }
 }
