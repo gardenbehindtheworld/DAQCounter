@@ -14,6 +14,7 @@ namespace DAQCounter
 {
     public partial class frm1 : Form
     {
+        private CounterIn ci = new CounterIn();
         private CounterOut co = new CounterOut();
 
         // Channel/device arrays
@@ -161,12 +162,12 @@ namespace DAQCounter
 
         private void CboCounterIn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            co.Channel = cboCounterIn.Text;
+            ci.Channel = cboCounterIn.Text;
         }
 
         private void CboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            co.Channel = cboCounterIn.Text;
         }
 
         private void UpdDesiredFrequency_ValueChanged(object sender, EventArgs e)
@@ -183,7 +184,7 @@ namespace DAQCounter
 
         private void UpdInputTerminal_ValueChanged(object sender, EventArgs e)
         {
-
+            ci.Terminal = pfiTerminals[(int)updInputTerminal.Value];
         }
 
         private void UpdOutputTerminal_ValueChanged(object sender, EventArgs e)
