@@ -280,6 +280,7 @@
             this.Controls.Add(this.cboDevices);
             this.Name = "frm1";
             this.Text = "Pulse Counter";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm1_FormClosed);
             this.Load += new System.EventHandler(this.Frm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.updDutyCycle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updDesiredFrequency)).EndInit();

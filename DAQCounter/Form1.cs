@@ -190,5 +190,11 @@ namespace DAQCounter
         {
             co.Terminal = pfiTerminals[(int)updOutputTerminal.Value];
         }
+
+        private void frm1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            co.Stop();
+            co.DisposeTask();
+        }
     }
 }
