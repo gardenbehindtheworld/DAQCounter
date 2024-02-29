@@ -12,6 +12,12 @@ namespace DAQCounter
     {
         private static NationalInstruments.DAQmx.Task coTask = new NationalInstruments.DAQmx.Task();
 
+        public string Device { get; set; }
+        public string Channel { get; set; }
+        public string Terminal { get; set; }
+        public double Frequency { get; set; }
+        public int DutyCycle { get; set; }
+        
         public bool Enabled { get; private set; }
 
         public CounterOut()

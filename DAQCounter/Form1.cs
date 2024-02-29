@@ -142,5 +142,40 @@ namespace DAQCounter
             btnOutputFrequency.Enabled = enableDisable;
             btnMeasureFrequency.Enabled = enableDisable;
         }
+
+        private void CboDevices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            co.Device = cboDevices.SelectedItem.ToString();
+        }
+
+        private void cboCounterIn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            co.Channel = cboCounterIn.SelectedItem.ToString();
+        }
+
+        private void cboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updDesiredFrequency_ValueChanged(object sender, EventArgs e)
+        {
+            co.Frequency = (double)updDesiredFrequency.Value;
+        }
+
+        private void updDutyCycle_ValueChanged(object sender, EventArgs e)
+        {
+            co.DutyCycle = (int)updDutyCycle.Value;
+        }
+
+        private void updInputTerminal_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updOutputTerminal_ValueChanged(object sender, EventArgs e)
+        {
+            co.Terminal = pfiTerminals[(int)updOutputTerminal.Value];
+        }
     }
 }
