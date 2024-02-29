@@ -223,7 +223,7 @@
             this.btnOutputFrequency.TabIndex = 19;
             this.btnOutputFrequency.Text = "Output Frequency";
             this.btnOutputFrequency.UseVisualStyleBackColor = true;
-            this.btnOutputFrequency.Click += new System.EventHandler(this.btnOutputFrequency_Click);
+            this.btnOutputFrequency.Click += new System.EventHandler(this.BtnOutputFrequency_Click);
             // 
             // btnMeasureFrequency
             // 

@@ -84,16 +84,32 @@ namespace DAQCounter
             }
         }
 
-        private void btnOutputFrequency_Click(object sender, EventArgs e)
+        private void BtnOutputFrequency_Click(object sender, EventArgs e)
         {
             switch (co.Enabled)
             {
                 case true:
-                    co.Stop();
+                    try
+                    {
+                        co.Stop();
+                    }
+                    catch (DaqException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
                     SetOutputStatus(false);
                     break;
                 case false:
-                    co.Start();
+                    try
+                    {
+                        co.Start();
+                    }
+                    catch (DaqException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
                     SetOutputStatus(true);
                     break;
             }
