@@ -101,6 +101,17 @@ namespace DAQCounter
                     SetOutputStatus(false);
                     break;
                 case false:
+                    if (cboCounterIn.Text == cboCounterOut.Text)
+                    {
+                        MessageBox.Show("Counter In and Counter Out cannot use the same channel.");
+                        return;
+                    }
+                    else if (updInputTerminal.Value == updOutputTerminal.Value)
+                    {
+                        MessageBox.Show("Input Terminal and Output Terminal cannot use the same terminal.");
+                        return;
+                    }
+
                     try
                     {
                         co.Start();
@@ -145,12 +156,12 @@ namespace DAQCounter
 
         private void CboDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            co.Device = cboDevices.SelectedItem.ToString();
+            co.Device = cboDevices.Text;
         }
 
         private void cboCounterIn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            co.Channel = cboCounterIn.SelectedItem.ToString();
+            co.Channel = cboCounterIn.Text;
         }
 
         private void cboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
