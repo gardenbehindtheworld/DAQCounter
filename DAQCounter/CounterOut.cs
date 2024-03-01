@@ -10,7 +10,7 @@ namespace DAQCounter
 {
     internal class CounterOut
     {
-        private static NationalInstruments.DAQmx.Task coTask = new NationalInstruments.DAQmx.Task();
+        private static NationalInstruments.DAQmx.Task CoTask = new NationalInstruments.DAQmx.Task();
 
         public string Device { get; set; }
         public string Channel { get; set; }
@@ -29,7 +29,7 @@ namespace DAQCounter
         {
             try
             {
-                coTask.COChannels.CreatePulseChannelFrequency(Channel, string.Empty,
+                CoTask.COChannels.CreatePulseChannelFrequency(Channel, string.Empty,
                     COPulseFrequencyUnits.Hertz, COPulseIdleState.High, 0, Frequency,
                     (double)DutyCycle / 100);
             }
@@ -40,15 +40,15 @@ namespace DAQCounter
 
             try
             {
-                coTask.COChannels.All.PulseTerminal = Terminal;
-                coTask.COChannels.All.PulseDutyCycle = (double)DutyCycle / 100;
-                coTask.COChannels.All.PulseFrequency = Frequency;
-                coTask.Timing.ConfigureImplicit(SampleQuantityMode.ContinuousSamples);
-                coTask.Start();
+                CoTask.COChannels.All.PulseTerminal = Terminal;
+                CoTask.COChannels.All.PulseDutyCycle = (double)DutyCycle / 100;
+                CoTask.COChannels.All.PulseFrequency = Frequency;
+                CoTask.Timing.ConfigureImplicit(SampleQuantityMode.ContinuousSamples);
+                CoTask.Start();
             }
             catch (DaqException ex)
             {
-                coTask.Stop();
+                CoTask.Stop();
                 throw new DaqException(ex.Message);
             }
 
@@ -59,7 +59,7 @@ namespace DAQCounter
         {
             try
             {
-                coTask.Stop();
+                CoTask.Stop();
             }
             catch (DaqException ex)
             {
@@ -81,7 +81,7 @@ namespace DAQCounter
 
         public void DisposeTask()
         {
-            coTask?.Dispose();
+            CoTask?.Dispose();
         }
     }
 }

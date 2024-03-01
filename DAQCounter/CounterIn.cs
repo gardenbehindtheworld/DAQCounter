@@ -11,8 +11,8 @@ namespace DAQCounter
 {
     internal class CounterIn
     {
-        private static NationalInstruments.DAQmx.Task ciTask = new NationalInstruments.DAQmx.Task();
-        private static CounterSingleChannelReader ciReader = new CounterSingleChannelReader(ciTask.Stream);
+        private static NationalInstruments.DAQmx.Task CiTask = new NationalInstruments.DAQmx.Task();
+        private static CounterSingleChannelReader CiReader = new CounterSingleChannelReader(CiTask.Stream);
 
         public string Device { get; set; }
         public string Channel { get; set; }
@@ -22,7 +22,7 @@ namespace DAQCounter
         {
             try
             {
-                ciTask.CIChannels.CreateFrequencyChannel(Channel, string.Empty, 1, 100000,
+                CiTask.CIChannels.CreateFrequencyChannel(Channel, string.Empty, 1, 100000,
                     CIFrequencyStartingEdge.Rising,
                     CIFrequencyMeasurementMethod.LowFrequencyOneCounter, 1, 4,
                     CIFrequencyUnits.Hertz);
@@ -34,8 +34,8 @@ namespace DAQCounter
 
             try
             {
-                ciTask.CIChannels.All.FrequencyTerminal = Terminal;
-                return ciReader.ReadSingleSampleDouble();
+                CiTask.CIChannels.All.FrequencyTerminal = Terminal;
+                return CiReader.ReadSingleSampleDouble();
             }
             catch (DaqException ex)
             {
