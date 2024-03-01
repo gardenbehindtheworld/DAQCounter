@@ -202,7 +202,7 @@ namespace DAQCounter
         {
             try
             {
-                lblMeasuredFrequencyNum.Text = ci.GetFrequency().ToString();
+                lblMeasuredFrequencyNum.Text = $"{ci.GetFrequency():0.000}";
             }
             catch (DaqException ex)
             {
