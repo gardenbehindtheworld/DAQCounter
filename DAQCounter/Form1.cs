@@ -167,7 +167,7 @@ namespace DAQCounter
 
         private void CboCounterOut_SelectedIndexChanged(object sender, EventArgs e)
         {
-            co.Channel = cboCounterIn.Text;
+            co.Channel = cboCounterOut.Text;
         }
 
         private void UpdDesiredFrequency_ValueChanged(object sender, EventArgs e)

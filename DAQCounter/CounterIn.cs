@@ -34,7 +34,7 @@ namespace DAQCounter
 
             try
             {
-                ciTask.CIChannels.All.PulseFrequencyTerminal = Terminal;
+                ciTask.CIChannels.All.FrequencyTerminal = Terminal;
                 return ciReader.ReadSingleSampleDouble();
             }
             catch (DaqException ex)
